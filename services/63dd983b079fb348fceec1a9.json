@@ -1,0 +1,165 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Restaurant Info API",
+    "description": "Restaurant information for IA slot filling",
+    "termsOfService": "http://miapp.com/terms.php",
+    "contact": {
+      "name": "María Jesús Rodríguez",
+      "url": "https://directorio.ugr.es/static/PersonalUGR/*/show/8cbe900fb866f9ac9f399915a132dad3",
+      "email": "mjesusrodriguez@ugr.es"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:5002",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "vegetarian, petfriendly, smoking, smokingzone"
+    }
+  ],
+  "paths": {
+    "/restaurantsearching": {
+      "get": {
+        "description": "Make the restaurant reservation",
+        "operationId": "bookRestaurant",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "costumer name",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-custom-question": "What is the name of the reservation costumer?"
+          },
+          {
+            "name": "second-name",
+            "in": "query",
+            "description": "costumer surname",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-custom-question": "What is the second name of the reservation costumer?"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone number of the customer.",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-custom-question": "Tell me your phone number in order to confirm the reservation, please."
+          },
+          {
+            "name": "smoking",
+            "in": "query",
+            "description": "smoking zone",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "x-custom-question": "do you want to eat in a smoking zone?"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Date of the booking.",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-custom-question": "What day do you want the reservation for?"
+          },
+          {
+            "name": "time",
+            "in": "query",
+            "description": "Time of the booking.",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-custom-question": "What time do you want the reservation for?"
+          },
+          {
+            "name": "diners",
+            "in": "query",
+            "description": "people for the booking",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            },
+            "x-custom-question": "For how many diners is the booking?"
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "description": "terrace or salon",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "terrace",
+                "salon"
+              ]
+            },
+            "x-custom-question": "Which location do you prefer, salon or terrace?"
+          }
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "{\"message\":\"The phone number is: 675151146\"}"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "url not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "{\"message\":\"Error: The url or request is not found\"}"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}
