@@ -15,7 +15,7 @@ import en_core_web_sm
 #nltk.download('wordnet')
 #nltk.download('omw-1.4')
 
-from intentrec import intentRec
+#from intentrec import intentRec
 
 app = Flask(__name__)
 
@@ -395,5 +395,16 @@ def getQuestions(parameters):
         return jsonify({'msg': 'Error finding questions'}), 500
 
 if __name__ == '__main__':
+    """
+    from flask_cors import CORS
+    import ssl
+
+    context = ssl.SSLContext()
+    context.load_cert_chain("/home/mariajesus/certificados/conversational_ugr_es.pem",
+                            "/home/mariajesus/certificados/conversational_ugr_es.key")
+    CORS(app)
+    app.run(host='0.0.0.0', port=5050, ssl_context=context, debug=False)
+    """
+
     app.run()
 

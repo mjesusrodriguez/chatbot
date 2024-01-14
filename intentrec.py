@@ -1,3 +1,4 @@
+"""
 #Documento para pasar el modelo pre-entrenado BERT para que me saque la predicción del intent
 
 #Importo librerías necesarias para el clasificador
@@ -255,3 +256,4 @@ def intentRec(input):
     #for text, label in zip(input, predictions):
         #print("Text:", text, "\nIntent:", classes[label])
         #print()
+"""
